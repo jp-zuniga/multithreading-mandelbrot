@@ -12,8 +12,7 @@ inline void measure_runtime(cil::CImg<unsigned char> &img, int n) {
     calc_fractal(img);
     steady_clock::time_point end = steady_clock::now();
 
-    std::cout << "t = "
-              << duration_cast<milliseconds>(end - begin).count()
+    std::cout << "t = " << duration_cast<milliseconds>(end - begin).count()
               << "ms\n";
   }
 }
