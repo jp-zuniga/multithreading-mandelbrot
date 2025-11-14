@@ -1,6 +1,6 @@
 #include <CImg.h>
 
 struct ThreadData {
-  long tid;
+  long *id;
   cil::CImg<unsigned char> *img;
 };
