@@ -17,7 +17,7 @@ nix-shell shell.nix
 nix-shell shell.nix --command <your-shell>
 ```
 
-Now, just run the project with `just`!
+Now, just run the project with [`just`](https://github.com/casey/just)!
 
 ```bash
 just run
