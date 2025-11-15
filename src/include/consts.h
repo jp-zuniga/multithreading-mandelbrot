@@ -12,5 +12,5 @@
 
 #define N_MAX 1000
 #define N_RUNS 5
-#define N_THREADS 12
+#define N_THREADS 3
 #define THREAD_COLS WIDTH / N_THREADS

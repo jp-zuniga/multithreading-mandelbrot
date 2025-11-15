@@ -48,10 +48,10 @@ inline void calc_pixel(ThreadData &data, const int &x, const int &y) {
 inline void *calc_thread(void *arg) {
   ThreadData *data = static_cast<ThreadData *>(arg);
 
-  int start_x = *data->id * THREAD_COLS;
-  int end_x = (*data->id == N_THREADS - 1) ? WIDTH : start_x + THREAD_COLS;
+  int start_x = data->id * THREAD_COLS;
+  int end_x = (data->id == N_THREADS - 1) ? WIDTH : start_x + THREAD_COLS;
 
-  for (int x = start_x; x < end_x; x++) {
+  for (int x = start_x; x <= end_x; x++) {
     for (int y = 0; y < HEIGHT; y++) {
       calc_pixel(*data, x, y);
     }
@@ -61,12 +61,13 @@ inline void *calc_thread(void *arg) {
 }
 
 inline void calc_fractal(cil::CImg<unsigned char> &img) {
+  int t;
   int rc;
   pthread_t threads[N_THREADS];
   ThreadData thread_data[N_THREADS];
 
-  for (long t = 0; t < N_THREADS; t++) {
-    thread_data[t] = {&t, &img};
+  for (t = 0; t < N_THREADS; t++) {
+    thread_data[t] = {t, &img};
     rc = pthread_create(&threads[t], nullptr, calc_thread,
                         static_cast<void *>(&thread_data[t]));
 
